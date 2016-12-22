@@ -1,5 +1,5 @@
 var oTurn = $('#flipbook').turn({
-    autoCenter: false,
+    autoCenter: true,
     width: 1172,
     height: 800,
     // page:1,
@@ -8,6 +8,13 @@ var oTurn = $('#flipbook').turn({
     next: true,
  });
 
+$('.zoom-view').on('click',function (){
+  zoom.to({
+    element: document.getElementById('flipbook'),
+    padding: 20
+  });
+
+});
 
 $("#prev").click(function(e){
     e.preventDefault();
@@ -20,31 +27,106 @@ $("#next").click(function(e){
 });
 
 $("#prev").hide();
+  $("#next").css("right", "13.5rem");
+  $(".download-file").css("right","16rem");
+  $(".zoom-view").css("right","16rem");
+
 $("#flipbook").bind("turning", function(event, page, view) {
   $("#prev").show();
   $("#next").show();
+  $("#next").css("right", "-5rem");
+  $(".download-file").css("right","-2.5rem");
+  $(".zoom-view").css("right","-2.5rem");
 });
 
 $("#flipbook").bind("first", function(event) {
   $("#prev").hide();
+  $("#next").css("right", "13.5rem");
+  $(".download-file").css("right","16rem");
+  $(".zoom-view").css("right","16rem");
+    // $("#next").css();
 });
 
 $("#flipbook").bind("last", function(event) {
   $("#next").hide();
+  $("#prev").css("left","13.5rem");
 });
 
-$("#zoom-viewport").zoom({
-  flipbook: $("#flipbook"),
-  max: 3
-});
+// // zoom.out();
 
-$("#zoom-view").bind("zoom.doubleTap", function(event) {
-  if ($(this).zoom("value")==1) {
-    $(this).zoom("zoomIn", event);
-  } else {
-    $(this).zoom("zoomOut");
-  }
-});
+
+
+// // zoom.to({
+// //   element: document.getElementById("zoomjs"),
+// //   padding: 2
+
+// // });
+
+// // zoom.to({
+// //     x: 100,
+// //     y: 200,
+// //     width: 300,
+// //     height: 300
+// //   });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// $("#zoom-viewport").zoom({
+//   flipbook: $("#flipbook"),
+//   max: 3,
+// });
+
+// $(".zoom-view").bind("zoom.doubleTap", function(event) {
+//   if ($(this).zoom("value")==1) {
+//     $(this).zoom("zoomIn", event);
+//   } else {
+//     $(this).zoom("zoomOut");
+//   }
+//   console.log("llegué a entrar");
+// });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -130,7 +212,7 @@ $("#zoom-view").bind("zoom.doubleTap", function(event) {
 // });
 
 // $('zoom-viewport').zoom({
-// 	flipbook: $('.magazine')
+//  flipbook: $('.magazine')
 // }); 
 
   //Initialize the zoom viewport
@@ -200,9 +282,9 @@ $("#zoom-view").bind("zoom.doubleTap", function(event) {
  // });
 
 // $("#flipbook").turn({
-// 	width: 1172,
-// 	height: 800,
-// 	autoCenter: true
+//  width: 1172,
+//  height: 800,
+//  autoCenter: true
 // });
 
 //    $("#flipbook").turn({
